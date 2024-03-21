@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_1"
+        android:icon="@drawable/home"
+        android:title="TO APPLE" />
+    <item
+        android:id="@+id/nav_2"
+        android:icon="@drawable/notifications"
+        android:title="TO CHRIS"
+        />
+    <item
+        android:id="@+id/nav_3"
+        android:icon="@drawable/settings"
+        android:title="TO ANOTHER ACTIVITY" />
+
+</menu>

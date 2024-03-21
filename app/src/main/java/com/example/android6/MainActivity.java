@@ -1,34 +1,89 @@
 package com.example.android6;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
+import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
+
+    public DrawerLayout drawer;
+    public ActionBarDrawerToggle toggle;
+    NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        drawer = findViewById(R.id.drawer_layout);
+        toggle = new ActionBarDrawerToggle
+                (MainActivity.this, drawer, R.string.drawer_open, R.string.drawer_close);
+        if (drawer != null) {
+            drawer.addDrawerListener(toggle);
+        }
 
-        bottomNavigationView.setOnNavigationItemReselectedListener
-            (item -> {
-                if (item.getItemId() == R.id.home) {
-                    Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_LONG).show();
-                } else if (item.getItemId() == R.id.settings) {
-                    Toast.makeText(MainActivity.this, "Settings", Toast.LENGTH_LONG).show();
+        toggle.syncState();
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(menuItem -> {
+            int id = menuItem.getItemId();
+            navController = Navigation.findNavController
+                    (MainActivity.this, R.id.nav_host_fragment);
+
+            if (id == R.id.nav_1) {
+                Toast.makeText
+                        (MainActivity.this, "1 clicked", Toast.LENGTH_SHORT).show();
+
+                try { // im braindead
+                    navController.navigate(R.id.action_mainFragment1_to_mainFragment2);
+                } catch (Exception e) {
+                    navController.navigate(R.id.action_mainFragment1_self);
                 }
-            });
+
+            } else if (id == R.id.nav_2) {
+                Toast.makeText
+                        (MainActivity.this, "2 clicked", Toast.LENGTH_SHORT).show();
+
+                navController.navigate(R.id.action_mainFragment2_to_mainFragment1);
+            } else if (id == R.id.nav_3) {
+                Toast.makeText
+                        (MainActivity.this, "3 clicked", Toast.LENGTH_SHORT).show();
+
+                Intent myIntent = new Intent(MainActivity.this, MainActivity2.class);
+                MainActivity.this.startActivity(myIntent);
+            }
+
+            drawer.closeDrawer(GravityCompat.START, false);
+            return true;
+        });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (toggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
