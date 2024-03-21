@@ -13,12 +13,12 @@ import android.view.ViewGroup;
  * Use the  factory method to
  * create an instance of this fragment.
  */
-public class MainFragment1 extends Fragment {
+public class SecondaryFragment2 extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
-    public MainFragment1() {
+    public SecondaryFragment2() {
         // Required empty public constructor
     }
 
@@ -32,7 +32,6 @@ public class MainFragment1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main1, container, false);
+        return inflater.inflate(R.layout.fragment_secondary2, container, false);
     }
-
 }

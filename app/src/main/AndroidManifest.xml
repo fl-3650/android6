@@ -22,8 +22,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity2"
-            android:exported="false" />
+            android:name=".SecondaryActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
     </application>
 
 </manifest>
