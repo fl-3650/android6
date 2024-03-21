@@ -25,5 +25,8 @@
         <action
             android:id="@+id/action_mainFragment2_to_mainFragment1"
             app:destination="@id/mainFragment1" />
+        <action
+            android:id="@+id/action_mainFragment2_self2"
+            app:destination="@id/mainFragment2" />
     </fragment>
 </navigation>

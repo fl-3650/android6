@@ -2,23 +2,17 @@ package com.example.android6;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
 import androidx.core.view.GravityCompat;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.Objects;
@@ -42,14 +36,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         toggle.syncState();
-
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(menuItem -> {
             int id = menuItem.getItemId();
             navController = Navigation.findNavController
-                    (MainActivity.this, R.id.nav_host_fragment);
+                    (MainActivity.this, R.id.nav_host_fragment_main);
 
             if (id == R.id.nav_1) {
                 Toast.makeText
@@ -70,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText
                         (MainActivity.this, "3 clicked", Toast.LENGTH_SHORT).show();
 
-                Intent myIntent = new Intent(MainActivity.this, MainActivity2.class);
+                Intent myIntent = new Intent(MainActivity.this, SecondaryActivity.class);
                 MainActivity.this.startActivity(myIntent);
             }
 
