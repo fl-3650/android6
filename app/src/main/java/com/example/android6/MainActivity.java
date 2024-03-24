@@ -64,7 +64,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText
                         (MainActivity.this, "3 clicked", Toast.LENGTH_SHORT).show();
 
-                Intent myIntent = new Intent(MainActivity.this, SecondaryActivity.class);
+                Intent myIntent = new Intent
+                        (MainActivity.this, SecondaryActivity.class);
                 MainActivity.this.startActivity(myIntent);
             }
 
