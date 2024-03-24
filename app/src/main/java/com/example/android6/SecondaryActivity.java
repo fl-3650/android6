@@ -14,8 +14,6 @@ import androidx.navigation.Navigation;
 
 public class SecondaryActivity extends AppCompatActivity {
 
-    NavController navController;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +35,7 @@ public class SecondaryActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem menuItem) {
         int id = menuItem.getItemId();
-        navController = Navigation.findNavController
+        NavController navController = Navigation.findNavController
                 (SecondaryActivity.this, R.id.nav_host_fragment_secondary);
 
         if (id == R.id.home) {

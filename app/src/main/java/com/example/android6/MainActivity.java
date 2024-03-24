@@ -19,9 +19,9 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
-    public DrawerLayout drawer;
-    public ActionBarDrawerToggle toggle;
-    NavController navController;
+    private DrawerLayout drawer;
+    private ActionBarDrawerToggle toggle;
+    private NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
